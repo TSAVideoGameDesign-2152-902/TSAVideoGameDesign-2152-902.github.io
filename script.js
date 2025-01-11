@@ -10,12 +10,56 @@ var sketchProc = function (processingInstance) {
 
         // END BOILER PLATE
 //let img;
-var player1Images = [];
+
 setup = function() {
-    player1Images.push(loadImage('Player 1-1.png'));
-    player1Images.push(loadImage('Player 1-2.png'));
-    player1Images.push(loadImage('Player 1-3.png'));
-    player1Images.push(loadImage('Player 1-4.png'));
+    blueBall.rightImages = [];
+    blueBall.rightImages.push(loadImage('Player 1-1R.png'));
+    blueBall.rightImages.push(loadImage('Player 1-2R.png'));
+    blueBall.rightImages.push(loadImage('Player 1-3R.png'));
+    blueBall.rightImages.push(loadImage('Player 1-4R.png'));
+    
+    blueBall.leftImages = [];
+    blueBall.leftImages.push(loadImage('Player 1-1L.png'));
+    blueBall.leftImages.push(loadImage('Player 1-2L.png'));
+    blueBall.leftImages.push(loadImage('Player 1-3L.png'));
+    blueBall.leftImages.push(loadImage('Player 1-4L.png'));
+
+    redBall.rightImages = [];
+    redBall.rightImages.push(loadImage('Player 2-1R.png'));
+    redBall.rightImages.push(loadImage('Player 2-2R.png'));
+    redBall.rightImages.push(loadImage('Player 2-3R.png'));
+    redBall.rightImages.push(loadImage('Player 2-4R.png'));
+
+    redBall.leftImages = [];
+    redBall.leftImages.push(loadImage('Player 2-1L.png'));
+    redBall.leftImages.push(loadImage('Player 2-2L.png'));
+    redBall.leftImages.push(loadImage('Player 2-3L.png'));
+    redBall.leftImages.push(loadImage('Player 2-4L.png'));
+    
+    yellowBall.rightImages = [];
+    yellowBall.rightImages.push(loadImage('Player 3-1R.png'));
+    yellowBall.rightImages.push(loadImage('Player 3-2R.png'));
+    yellowBall.rightImages.push(loadImage('Player 3-3R.png'));
+    yellowBall.rightImages.push(loadImage('Player 3-4R.png'));
+
+    yellowBall.leftImages = [];
+    yellowBall.leftImages.push(loadImage('Player 3-1L.png'));
+    yellowBall.leftImages.push(loadImage('Player 3-2L.png'));
+    yellowBall.leftImages.push(loadImage('Player 3-3L.png'));
+    yellowBall.leftImages.push(loadImage('Player 3-4L.png'));
+
+    greenBall.rightImages = [];
+    greenBall.rightImages.push(loadImage('Player 4-1R.png'));
+    greenBall.rightImages.push(loadImage('Player 4-2R.png'));
+    greenBall.rightImages.push(loadImage('Player 4-3R.png'));
+    greenBall.rightImages.push(loadImage('Player 4-4R.png'));
+    
+    greenBall.leftImages = [];
+    greenBall.leftImages.push(loadImage('Player 4-1L.png'));
+    greenBall.leftImages.push(loadImage('Player 4-2L.png'));
+    greenBall.leftImages.push(loadImage('Player 4-3L.png'));
+    greenBall.leftImages.push(loadImage('Player 4-4L.png'));
+    
 }
 var mult = 2;
 var win = 0;
@@ -45,6 +89,8 @@ var Ball = function(config) {
     this.isMovingRight = false;
     this.isMovingLeft = false;
     this.currentImage = 0;
+    this.rightImages = [];
+    this.leftImages = [];
 };
 Ball.prototype = Object.create(thingsWithPhysics.prototype);
 
@@ -359,19 +405,19 @@ var homeScreen = new Level({platforms: platforms0, ladders: ladders0, moneys: mo
 var level1 = new Level({platforms: platforms1, ladders: ladders1, moneys: moneys1, boxes: boxes0, levers: levers1, boxCheckers: boxCheckers0, blueX: 370, blueY: 380, redX: 20, redY: 100, yellowX: 20, yellowY: 380, greenX: 340, greenY: 140, endX: 240, endY: 330, endWidth: 30, endHeight: 30});
 var level2 = new Level({platforms: platforms2, ladders: ladders2, moneys: moneys2, boxes: boxes2, levers: levers2, boxCheckers: boxCheckers0, blueX: 370, blueY: 380, redX: 40, redY: 300, yellowX: 185, yellowY: 50, greenX: 360, greenY: 300, endX: 20, endY: 350, endWidth: 30, endHeight: 30});
 var level3 = new Level({platforms: platforms3, ladders: ladders3, moneys: moneys3, boxes: boxes3, levers: levers3, boxCheckers: boxCheckers, blueX: 50, blueY: 380, redX: 70, redY: 380, yellowX: 90, yellowY: 380, greenX: 110, greenY: 380, endX: 360, endY: 350, endWidth: 30, endHeight: 30});
-var endScreen = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0});
-var controls = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0});
-var stages = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0});
+var endScreen = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
+var controls = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
+var stages = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
 var levels = [homeScreen, level1, level2, level3, endScreen, controls, stages];
-var currentLevel = 3;
+var currentLevel = 0;
 
 var playerAspectRatio = 170/400;
 var playerHeight = 40;
 var playerWidth = playerHeight * playerAspectRatio;
-var blueBall = new Ball({x: levels[currentLevel].blueX, y: levels[currentLevel].blueY, name: "Blue"});
-var redBall = new Ball({x: levels[currentLevel].redX, y: levels[currentLevel].redY, name: "Red"});
-var yellowBall = new Ball({x: levels[currentLevel].yellowX, y: levels[currentLevel].yellowY, name: "Yellow"});
-var greenBall = new Ball({x: levels[currentLevel].greenX, y: levels[currentLevel].greenY, name: "Green"});
+var blueBall = new Ball({x: levels[currentLevel].blueX, y: levels[currentLevel].blueY, width: playerWidth*2, height: playerHeight*1.5, name: "Blue"});
+var redBall = new Ball({x: levels[currentLevel].redX, y: levels[currentLevel].redY, width: playerWidth, height: playerHeight, name: "Red"});
+var yellowBall = new Ball({x: levels[currentLevel].yellowX, y: levels[currentLevel].yellowY, width: playerWidth, height: playerHeight, name: "Yellow"});
+var greenBall = new Ball({x: levels[currentLevel].greenX, y: levels[currentLevel].greenY, width: playerWidth, height: playerHeight, name: "Green"});
 
 var players = [blueBall, redBall, yellowBall, greenBall];
 
@@ -965,10 +1011,12 @@ Ball.prototype.applyUserInput = function (platforms, boxes, players) {
         if (keys.includes(68)) {
             this.isFacingLeft = false;
             this.ax = this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.rightImages.length*10);
         }
         else if (keys.includes(65)) {
             this.isFacingLeft = true;
             this.ax = -this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.leftImages.length*10);
         }
         else if (this.isMovingRight === false) {
             if (this.isMovingLeft === false) {
@@ -1010,10 +1058,12 @@ Ball.prototype.applyUserInput = function (platforms, boxes, players) {
         if (keys.includes(72)) {
             this.isFacingLeft = false;
             this.ax = this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.rightImages.length*10);
         }
         else if (keys.includes(70)) {
             this.isFacingLeft = true;
             this.ax = -this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.leftImages.length*10);
         }
         else if (this.isMovingRight === false) {
             if (this.isMovingLeft === false) {
@@ -1036,10 +1086,12 @@ Ball.prototype.applyUserInput = function (platforms, boxes, players) {
         if (keys.includes(76)) {
             this.isFacingLeft = false;
             this.ax = this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.leftImages.length*10);
         }
         else if (keys.includes(74)) {
             this.isFacingLeft = true;
             this.ax = -this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.rightImages.length*10);
         }
         else if (this.isMovingRight === false) {
             if (this.isMovingLeft === false) {
@@ -1072,10 +1124,12 @@ Ball.prototype.applyUserInput = function (platforms, boxes, players) {
         if (keys.includes(RIGHT)) {
             this.isFacingLeft = false;
             this.ax = this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.leftImages.length*10);
         }
         else if (keys.includes(LEFT)) {
             this.isFacingLeft = true;
             this.ax = -this.acceleration;
+            this.currentImage = (this.currentImage + 1) % (this.rightImages.length*10);
         }
         else if (this.isMovingRight === false) {
             if (this.isMovingLeft === false) {
@@ -1269,25 +1323,9 @@ BoxChecker.prototype.draw = function() {
 }
 Ball.prototype.draw = function () {
     if (currentLevel > 0) {
-        if (this.name === "Blue") {
-            var imageNumber = floor(this.currentImage/10)
-            image(player1Images[imageNumber], this.x, this.y, this.width, this.height);
-            this.currentImage = (this.currentImage + 1) % (player1Images.length*10);
-            //fill(0, 98, 255);
-            //ellipse(this.x + this.width/2, this.y + this.height/2, this.width, this.height);
-        }
-        if (this.name === "Red") {
-            fill(255, 0, 0);
-            ellipse(this.x + this.width/2, this.y + this.height/2, this.width, this.height);
-        }
-        if (this.name === "Yellow") {
-            fill(255, 251, 0);
-            ellipse(this.x + this.width/2, this.y + this.height/2, this.width, this.height);
-        }
-        if (this.name === "Green") {
-            fill(0, 143, 2);
-            ellipse(this.x + this.width/2, this.y + this.height/2, this.width, this.height);
-        }
+        var imageNumber = floor(this.currentImage/10);
+        var playerImage = this.isFacingLeft ? this.leftImages[imageNumber] : this.rightImages[imageNumber];
+        image(playerImage, this.x, this.y, this.width, this.height);
     }
 };
 
