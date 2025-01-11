@@ -53,7 +53,7 @@ setup = function() {
     greenBall.rightImages.push(loadImage('Player 4-2R.png'));
     greenBall.rightImages.push(loadImage('Player 4-3R.png'));
     greenBall.rightImages.push(loadImage('Player 4-4R.png'));
-    
+
     greenBall.leftImages = [];
     greenBall.leftImages.push(loadImage('Player 4-1L.png'));
     greenBall.leftImages.push(loadImage('Player 4-2L.png'));
@@ -498,7 +498,7 @@ Level.drawTextAndEnd = function () {
         fill(0, 0, 0);
         text("The Heist", 122 * mult, 34 * mult, 400 * mult, 100 * mult);
         textSize(12 * mult);
-        text("Made by 1145-902", 131 * mult, 345 * mult, 339 * mult, 100 * mult);
+        text("Made by 2152-902", 131 * mult, 345 * mult, 339 * mult, 100 * mult);
     }
     if (currentLevel === 1) {
         fill(0, 0, 0);
