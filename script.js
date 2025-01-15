@@ -414,15 +414,15 @@ var currentLevel = 0;
 var playerAspectRatio = 170/400;
 var playerHeight = 40;
 var playerWidth = playerHeight * playerAspectRatio;
-var blueBall = new Ball({x: levels[currentLevel].blueX, y: levels[currentLevel].blueY, width: playerWidth*2, height: playerHeight*1.5, name: "Blue"});
-var redBall = new Ball({x: levels[currentLevel].redX, y: levels[currentLevel].redY, width: playerWidth, height: playerHeight, name: "Red"});
+var blueBall = new Ball({x: levels[currentLevel].blueX, y: levels[currentLevel].blueY, width: playerWidth*2, height: playerHeight, name: "Blue"});
+var redBall = new Ball({x: levels[currentLevel].redX, y: levels[currentLevel].redY, width: playerWidth, height: playerHeight/2, name: "Red"});
 var yellowBall = new Ball({x: levels[currentLevel].yellowX, y: levels[currentLevel].yellowY, width: playerWidth, height: playerHeight, name: "Yellow"});
 var greenBall = new Ball({x: levels[currentLevel].greenX, y: levels[currentLevel].greenY, width: playerWidth, height: playerHeight, name: "Green"});
 
 var players = [blueBall, redBall, yellowBall, greenBall];
 
 Ladder.prototype.checkBall = function(ball) {
-    if (ball.x + ball.width/2 > this.x*mult && ball.x < (this.x + 25)*mult && ball.y > (this.y - 20)*mult && ball.y < (this.y + 60)*mult) {
+    if (ball.x + ball.width/2 > this.x*mult && ball.x < (this.x + 25)*mult && ball.y - ball.height > (this.y - ball.height - 10)*mult && ball.y < (this.y + 60)*mult) {
         return true;
     }
     else {
@@ -432,7 +432,7 @@ Ladder.prototype.checkBall = function(ball) {
 
 lever.prototype.checkBall = function(ball) {
     if (ball.name === "Yellow") {
-        if (ball.x + ball.width > this.leverX && ball.x < this.leverX + 26 && ball.y > this.leverY - 18 && ball.y < this.leverY) {
+        if (ball.x + ball.width > this.leverX && ball.x < this.leverX + 26 && ball.y > this.leverY - 40 && ball.y < this.leverY) {
             return true;
         } else {
             return false;
@@ -460,6 +460,10 @@ Level.applyChangeInLevels = function (players) {
         if (win === 3 && players[i].x + players[i].width/2 > levels[currentLevel].endX && players[i].x + players[i].width/2 < levels[currentLevel].endX + levels[currentLevel].endWidth && players[i].y + players[i].width/2 > levels[currentLevel].endY && players[i].y + players[i].width/2 < levels[currentLevel].endY + levels[currentLevel].endHeight) {
             amountOfPlayers += 1;
             if (amountOfPlayers === 4) {
+                greenBall.isHolding = false;
+                blueBall.isHeld = false;
+                redBall.isHeld = false;
+                yellowBall.isHeld = false;
                 currentLevel++;
                 blueBall.x = levels[currentLevel].blueX;
                 blueBall.y = levels[currentLevel].blueY;
@@ -473,7 +477,7 @@ Level.applyChangeInLevels = function (players) {
                 players[i].vx = 0;
                 players[i].vy = 0;
 
-                amountOfPlayer = 0;
+                amountOfPlayers = 0;
                 win = 0;
             }
         }
@@ -484,15 +488,6 @@ Level.drawTextAndEnd = function () {
     fill(128, 96, 74);
     rect(levels[currentLevel].endX, levels[currentLevel].endY, levels[currentLevel].endWidth, levels[currentLevel].endHeight);
 
-    if (currentLevel > 0 && currentLevel < 4) {
-        textSize(16 * mult);
-        fill(0, 0, 0);
-        text(win + "/3", 400, 60, 100, 100);
-        fill(255, 255, 0);
-        ellipse(375, 70, 40, 40);
-        fill(0, 0, 0);
-        text("$", 365, 60, 100, 100);
-    }
     if (currentLevel === 0) {
         textSize(32 * mult);
         fill(0, 0, 0);
@@ -583,6 +578,15 @@ Button.prototype.draw = function () {
 
     if (this.isPauseButton === true && gameIsPaused === false) {
         if (currentLevel > 0 && currentLevel < 4) {
+            //Drawing text at top
+            textSize(16 * mult);
+            fill(0, 0, 0);
+            text(win + "/3", 400, 60, 100, 100);
+            fill(255, 255, 0);
+            ellipse(375, 70, 40, 40);
+            fill(0, 0, 0);
+            text("$", 365, 60, 100, 100);
+            //Drawing actual button
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(255, 255, 255);
@@ -811,7 +815,7 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
             this.vy = 0;
             this.onPlatform = true;
         }
-        
+
         if (platform.canKill === true && this.y > platform.y - this.height && this.y < platform.y + 1 && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width) {
             if (this.name === "Blue") {
                 this.x = levels[currentLevel].blueX;
@@ -832,6 +836,10 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
                 this.vy = 0;
             }
             else if (this.name === "Green") {
+                this.isHolding = false;
+                blueBall.isHeld = false;
+                redBall.isHeld = false;
+                yellowBall.isHeld = false;
                 this.x = levels[currentLevel].greenX;
                 this.y = levels[currentLevel].greenY;
                 this.vx = 0;
@@ -864,6 +872,10 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
                 this.vy = 0;
             }
             else if (this.name === "Green") {
+                this.isHolding = false;
+                blueBall.isHeld = false;
+                redBall.isHeld = false;
+                yellowBall.isHeld = false;
                 this.x = levels[currentLevel].greenX;
                 this.y = levels[currentLevel].greenY;
                 this.vx = 0;
@@ -897,6 +909,10 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
                 this.vy = 0;
             }
             else if (this.name === "Green") {
+                this.isHolding = false;
+                blueBall.isHeld = false;
+                redBall.isHeld = false;
+                yellowBall.isHeld = false;
                 this.x = levels[currentLevel].greenX;
                 this.y = levels[currentLevel].greenY;
                 this.vx = 0;
@@ -929,6 +945,10 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
                 this.vy = 0;
             }
             else if (this.name === "Green") {
+                this.isHolding = false;
+                blueBall.isHeld = false;
+                redBall.isHeld = false;
+                yellowBall.isHeld = false;
                 this.x = levels[currentLevel].greenX;
                 this.y = levels[currentLevel].greenY;
                 this.vx = 0;
@@ -985,7 +1005,7 @@ Ball.prototype.applyIntersect4 = function(box) {
     }
 };
 Ball.prototype.applyHold = function(otherBall) {
-        if (keys.includes(DOWN) && this.y + this.height/2 > otherBall.y && this.y + this.height/2 < otherBall.y + otherBall.height && this.x + this.width > otherBall.x && this.x < otherBall.x + otherBall.width) {
+        if (keys.includes(DOWN) && this.y + this.height > otherBall.y && this.y + this.height < otherBall.y + otherBall.height && this.x + this.width > otherBall.x && this.x < otherBall.x + otherBall.width) {
             otherBall.isHeld = true;
             this.isHolding = true;
         } 
@@ -1030,9 +1050,9 @@ Ball.prototype.applyUserInput = function (platforms, boxes, players) {
         }
         
         for (var i = 0; i < platforms.length; i++) {
-            if (keys.includes(83) && platforms[i].canBreak === true && this.x + this.width > platforms[i].x - 10 && this.x + this.width <= platforms[i].x && this.y + this.height/2 > platforms[i].y && this.y < platforms[i].y + platforms[i].height) {
+            if (keys.includes(83) && platforms[i].canBreak === true && this.x + this.width > platforms[i].x - 10 && this.x + this.width <= platforms[i].x && this.y + this.height > platforms[i].y && this.y < platforms[i].y + platforms[i].height) {
                 platforms[i].isBroken = true;
-            } else if (keys.includes(83) && platforms[i].canBreak === true && this.x >= platforms[i].x + platforms[i].width && this.x < platforms[i].x + platforms[i].width + 10 && this.y + this.height/2 > platforms[i].y && this.y < platforms[i].y + platforms[i].height) {
+            } else if (keys.includes(83) && platforms[i].canBreak === true && this.x >= platforms[i].x + platforms[i].width && this.x < platforms[i].x + platforms[i].width + 10 && this.y + this.height > platforms[i].y && this.y < platforms[i].y + platforms[i].height) {
                 platforms[i].isBroken = true;
             }
         }
@@ -1448,7 +1468,8 @@ draw = function () {
         }
     }
     background(199, 199, 199);
-    
+    Level.drawTextAndEnd();
+
     for (var i = 0; i < levers.length; i++) {
         levers[i].draw();
     }
@@ -1461,7 +1482,6 @@ draw = function () {
     for (var i = 0; i < platforms.length; i++) {
         platforms[i].draw();
     }
-    Level.drawTextAndEnd();
     for (var i = 0; i < ladders.length; i++) {
         ladders[i].draw();
     }
