@@ -1239,10 +1239,10 @@ thingsWithPhysics.prototype.applyVelocity = function () {
     if (this.vy > 6) {
         this.vy = 6;
     }
-
+    /*
     if (this.vy < -10) {
         this.vy = -10;
-    }
+    }*/
 
     this.x += this.vx;
     this.y += this.vy;
