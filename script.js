@@ -810,7 +810,7 @@ Platform.prototype.applyMovement = function () {
 
 thingsWithPhysics.prototype.applyIntersect = function (platform) {
     if (platform.isBroken === false) {
-        if (platform.canKill === false && this.y > platform.y - this.height && this.y < platform.y + 1 && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width) {  
+        if (platform.canKill === false && this.y + this.height > platform.y && this.y < platform.y + 1 && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width) {  
             this.y = platform.y - this.height;
             this.vy = 0;
             this.onPlatform = true;
@@ -846,8 +846,7 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
                 this.vy = 0;
             }
         }
-       
-        if (platform.canKill === false && this.y + this.height/2 > platform.y && this.y + this.height/2 < platform.y + platform.height && this.x + this.width > platform.x && this.x < platform.x + 1) {
+        if (platform.canKill === false && this.y + this.height*3/4 > platform.y && this.y + this.height/4 < platform.y + platform.height && this.x + this.width > platform.x && this.x < platform.x + 1) {
             this.x = platform.x - this.width;
             this.vx = 0;
         }
@@ -884,7 +883,7 @@ thingsWithPhysics.prototype.applyIntersect = function (platform) {
 
         }
         
-        if (platform.canKill === false && this.y + this.height/2 > platform.y && this.y + this.height/2 < platform.y + platform.height && this.x < platform.x + platform.width && this.x > platform.x - 1) {
+        if (platform.canKill === false && this.y + this.height*3/4 > platform.y && this.y + this.height/4 < platform.y + platform.height && this.x < platform.x + platform.width && this.x > platform.x - 1) {
             this.x = platform.x + platform.width;
             this.vx = 0;
         }
@@ -1231,19 +1230,22 @@ thingsWithPhysics.prototype.applyGravity = function () {
 thingsWithPhysics.prototype.applyVelocity = function () {
     if (this.vx > 6) {
         this.vx = 6;
-        this.x += this.vx;
     }
-    else if (this.vx < 6) {
-        this.x += this.vx;
+
+    if (this.vx < -6) {
+        this.vx = -6;
     }
 
     if (this.vy > 6) {
         this.vy = 6;
-        this.y += this.vy;
     }
-    else if (this.vy < 6) {
-        this.y += this.vy;
+
+    if (this.vy < -10) {
+        this.vy = -10;
     }
+
+    this.x += this.vx;
+    this.y += this.vy;
 };
 thingsWithPhysics.prototype.applyAcceleration = function () {
     this.vx += this.ax;
