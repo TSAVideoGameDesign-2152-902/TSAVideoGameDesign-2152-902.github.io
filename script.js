@@ -10,7 +10,9 @@ var sketchProc = function (processingInstance) {
 
         // END BOILER PLATE
 
+var controlScreen
 setup = function() {
+    controlScreen = loadImage('control screen.png');
     blueBall.rightImages = [];
     blueBall.rightImages.push(loadImage('Player 1-1R.png'));
     blueBall.rightImages.push(loadImage('Player 1-2R.png'));
@@ -172,7 +174,7 @@ var controlButton = new Button({ buttonX: 127, buttonY: 147, buttonWidth: 130, b
 
 var levelButton = new Button({ buttonX: 127, buttonY: 199, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isLevelButton: true });
 
-var backButton = new Button({ buttonX: 10, buttonY: 340, buttonWidth: 80, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isBackButton: true });
+var backButton = new Button({ buttonX: 16, buttonY: 20, buttonWidth: 80, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isBackButton: true });
 
 var pauseButton = new Button({ buttonX: 375, buttonY: 20, buttonWidth: 20, buttonHeight: 20, color1: 4, color2: 255, color3: 0, isPauseButton: true });
 
@@ -534,16 +536,7 @@ Level.drawTextAndEnd = function () {
         textSize(12*mult);
     }
     if (currentLevel === 5) {
-        fill(0, 0, 0);
-        textSize(40*mult);
-        text("Controls", 255, 40, 300, 100);
-        textSize(10 * mult);
-        line(0, 400, 800, 400);
-        line(400, 0, 400, 800);
-        text("Player 1: Use Arrow Keys to move around, and the down arrow to attack enemies.", 8, 100, 400, 100);
-        text("Player 2: Use WASD Keys to move around, and the S key to destroy breakable walls.", 400, 100, 400, 100);
-        text("Player 3: Use TFGH Keys to move around, and the G key to change sizes.", 8, 400, 400, 100);
-        text("Player 4: Use IJKL Keys to move around, and you can pick up other players.", 400, 400, 400, 100);
+        image(controlScreen, 0, 0, 800, 800);
     }
     if (currentLevel === 6) {
         fill(0, 0, 0);
@@ -577,7 +570,7 @@ Button.prototype.draw = function () {
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
             textSize(32 * mult);
-            text("Back", 10 * mult, 350 * mult, 100 * mult, 100 * mult);
+            text("Back", 17 * mult, 28 * mult, 100 * mult, 100 * mult);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
