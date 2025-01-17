@@ -9,7 +9,6 @@ var sketchProc = function (processingInstance) {
         smooth();
 
         // END BOILER PLATE
-//let img;
 
 setup = function() {
     blueBall.rightImages = [];
@@ -183,11 +182,11 @@ var restartButton = new Button({ buttonX: 160, buttonY: 220, buttonWidth: 80, bu
 
 var mainMenuButton2 = new Button({ buttonX: 260, buttonY: 220, buttonWidth: 80, buttonHeight: 20, color1: 4, color2: 255, color3: 0, isMainMenuButton2: true });
 
-var firstLevelButton = new Button({ buttonX: 5, buttonY: 355, buttonWidth: 90, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isFirstLevelButton: true });
+var firstLevelButton = new Button({ buttonX: 70, buttonY: 150, buttonWidth: 50, buttonHeight: 50, color1: 4, color2: 255, color3: 0, isFirstLevelButton: true });
 
-var secondLevelButton = new Button({ buttonX: 5, buttonY: 355, buttonWidth: 90, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isSecondLevelButton: true });
+var secondLevelButton = new Button({ buttonX: 170, buttonY: 150, buttonWidth: 50, buttonHeight: 50, color1: 4, color2: 255, color3: 0, isSecondLevelButton: true });
 
-var thirdLevelButton = new Button({ buttonX: 5, buttonY: 355, buttonWidth: 90, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isThirdLevelButton: true });
+var thirdLevelButton = new Button({ buttonX: 270, buttonY: 150, buttonWidth: 50, buttonHeight: 50, color1: 4, color2: 255, color3: 0, isThirdLevelButton: true });
 
 var buttons = [playButton, mainMenuButton, controlButton, levelButton, backButton, pauseButton, resumeButton, restartButton, mainMenuButton2, firstLevelButton, secondLevelButton, thirdLevelButton];
 
@@ -266,25 +265,25 @@ var Platform28 = new Platform({ x: 100, y: 220, width: 50, height: 10});
 var Platform29 = new Platform({ x: 200, y: 100, width: 200, height: 10});
 var Platform210 = new Platform({ x: 240, y: -1, width: 10, height: 81});
 var Platform211 = new Platform({ x: 0, y: 100, width: 50, height: 10});
-var Platform212 = new Platform({ x: 300, y: 315, width: 10, height: 21});
-var Platform213 = new Platform({ x: 250, y: 326, width: 50, height: 10});
-var Platform214 = new Platform({x: -1, y: 0, width: 402, height: 50});
+//var Platform212 = new Platform({ x: 300, y: 315, width: 10, height: 31});
+var Platform213 = new Platform({ x: 250, y: 359, width: 50, height: 10});
+//var Platform214 = new Platform({ x: 250, y: 315, width: 10, height: 11});
+var Platform215 = new Platform({x: -1, y: 0, width: 402, height: 50});
 var breakPlatform21 = new Platform({x: 100, y: 295, width: 10, height: 10, canBreak: true});
 var breakPlatform22 = new Platform({x: 100, y: 285, width: 10, height: 10, canBreak: true});
 var breakPlatform23 = new Platform({x: 240, y: 90, width: 10, height: 10, canBreak: true});
 var breakPlatform24 = new Platform({x: 240, y: 80, width: 10, height: 10, canBreak: true});
 var killPlatform21 = new Platform({x: -1, y: 265, width: 111, height: 10, canKill: true});
-var killPlatform22 = new Platform({x: -1, y: 265, width: 111, height: 10, canKill: true});
 
 var Platform31 = new Platform({ x: -1, y: 380, width: 401, height: 10});
-var Platform32 = new Platform({ x: -1, y: 305, width: 10, height: 10});
-var Platform33 = new Platform({ x: 40, y: 305, width: 370, height: 10});
-var Platform34 = new Platform({ x: 110, y: 70, width: 60, height: 10});
+var Platform32 = new Platform({ x: -1, y: 305, width: 170, height: 10});
+var Platform33 = new Platform({ x: 200, y: 305, width: 370, height: 10});
+var Platform34 = new Platform({ x: 120, y: 80, width: 50, height: 10});
 var Platform35 = new Platform({ x: 100, y: 0, width: 10, height: 225});
-var Platform36 = new Platform({ x: 110, y: 50, width: 10, height: 20});
-var Platform37 = new Platform({ x: 200, y: 70, width: 90, height: 10});
-var Platform38 = new Platform({ x: 110, y: 140, width: 60, height: 10});
-var Platform39 = new Platform({ x: 110, y: 215, width: 120, height: 10});
+var Platform36 = new Platform({ x: 140, y: 50, width: 10, height: 20});
+var Platform37 = new Platform({ x: 200, y: 80, width: 90, height: 10});
+var Platform38 = new Platform({ x: 120, y: 140, width: 50, height: 10});
+var Platform39 = new Platform({ x: 120, y: 215, width: 110, height: 10});
 var Platform310 = new Platform({ x: 200, y: 140, width: 80, height: 10});
 var Platform311 = new Platform({ x: 320, y: 140, width: 50, height: 10});
 var Platform313 = new Platform({ x: 320, y: 215, width: 80, height: 10});
@@ -295,7 +294,7 @@ var Platform317 = new Platform({ x: 360, y: 70, width: 20, height: 10});
 var Platform318 = new Platform({ x: 360, y: 150, width: 10, height: 55});
 var Platform319 = new Platform({ x: 320, y: 225, width: 100, height: 69});
 var Platform312 = new Platform({x: -1, y: 0, width: 402, height: 50});
-var breakPlatform31 = new Platform({x: 150, y: 60, width: 10, height: 10, canBreak: true});
+var breakPlatform31 = new Platform({x: 140, y: 70, width: 10, height: 10, canBreak: true});
 var breakPlatform32 = new Platform({x: 360, y: 205, width: 10, height: 10, canBreak: true});
 var breakPlatform33 = new Platform({x: 0, y: 185, width: 10, height: 10, canBreak: true});
 var breakPlatform34 = new Platform({x: 10, y: 185, width: 10, height: 10, canBreak: true});
@@ -319,15 +318,19 @@ var breakPlatform321 = new Platform({x: 20, y: 155, width: 10, height: 10, canBr
 var breakPlatform322 = new Platform({x: 30, y: 155, width: 10, height: 10, canBreak: true});
 var breakPlatform323 = new Platform({x: 40, y: 155, width: 10, height: 10, canBreak: true});
 var breakPlatform324 = new Platform({x: 50, y: 155, width: 10, height: 10, canBreak: true});
-var killPlatform31 = new Platform({ x: 120, y: 50, width: 10, height: 20, canKill: true});
+var killPlatform31 = new Platform({ x: 120, y: 205, width: 50, height: 10, canKill: true});
 var killPlatform32 = new Platform({ x: -1, y: 205, width: 61, height: 10, canKill: true});
 
 var platforms0 = [];
 var platforms1 = [Platform1, Platform2, Platform3, Platform4, Platform5, Platform6, Platform7, Platform8, Platform9, Platform10, Platform11, Platform12, Platform13, Platform14, Platform15, Platform16, breakPlatform1, breakPlatform2, breakPlatform3];
 
-var platforms2 = [Platform21, Platform22, Platform23, Platform24, Platform25, Platform26, Platform27, Platform28, Platform29, Platform210, Platform211, Platform212, Platform213, Platform214, breakPlatform21, breakPlatform22, breakPlatform23, breakPlatform24, killPlatform21, killPlatform22];
+var platforms2 = [Platform21, Platform22, Platform23, Platform24, Platform25, Platform26, Platform27, Platform28, Platform29, Platform210, Platform211, Platform213, Platform215, breakPlatform21, breakPlatform22, breakPlatform23, breakPlatform24, killPlatform21];
 
 var platforms3 = [Platform31, Platform32, Platform33, Platform34, Platform35, Platform36, Platform37, Platform38, Platform39, Platform310, Platform311, Platform313, Platform314, Platform315, Platform316, Platform317, Platform318, Platform319, Platform312, breakPlatform31, breakPlatform32, breakPlatform33, breakPlatform34, breakPlatform35, breakPlatform36, breakPlatform37, breakPlatform38, breakPlatform39, breakPlatform310, breakPlatform311, breakPlatform312, breakPlatform313, breakPlatform314, breakPlatform315, breakPlatform316, breakPlatform317, breakPlatform318, breakPlatform319, breakPlatform320, breakPlatform321, breakPlatform322, breakPlatform323, breakPlatform324, killPlatform31, killPlatform32];
+
+var platform41 = new Platform({x: 150, y: 350, width: 50, height: 50});
+//var platform42 = new Platform({x: 150, y: 250, width: 50, height: 50});
+var platforms4 = [Platform1, platform41];
 
 var ladder1 = new Ladder({x: 60, y: 295});
 var ladder2 = new Ladder({x: 250, y: 235});
@@ -335,7 +338,7 @@ var ladder3 = new Ladder({x: 250, y: 157});
 
 var ladder21 = new Ladder({x: 160, y: 315});
 
-var ladder31 = new Ladder({x: 10, y: 315});
+var ladder31 = new Ladder({x: 170, y: 315});
 var ladder32 = new Ladder({x: 170, y: 80});
 var ladder33 = new Ladder({x: 170, y: 150});
 var ladder34 = new Ladder({x: 330, y: 80});
@@ -357,7 +360,7 @@ var Money1 = new Money({x: 210, y: 375});
 var Money2 = new Money({x: 20, y: 180});
 var Money3 = new Money({x: 200, y: 200});
 
-var Money21 = new Money({x: 290, y: 321});
+var Money21 = new Money({x: 275, y: 375});
 var Money22 = new Money({x: 25, y: 80});
 var Money23 = new Money({x: 385, y: 120});
 
@@ -379,8 +382,8 @@ var lever23 = new lever({leverX: 280, leverY: 98, gateX: 140, gateY: -1, gateWid
 var lever24 = new lever({leverX: 10, leverY: 303, gateX: 80, gateY: 315, gateWidth: 10, gateHeight: 221, color: "Green", timeOut: 5000});
 
 var lever31 = new lever({leverX: 130, leverY: 138, gateX: 60, gateY: 0, gateWidth: 10, gateHeight: 220, color: "Red"});
-var lever32 = new lever({leverX: 230, leverY: 68, gateX: 360, gateY: 50, gateWidth: 10, gateHeight: 20, color: "Blue"});
-var lever33 = new lever({leverX: 230, leverY: 138, gateX: 170, gateY: 70, gateWidth: 50, gateHeight: 10, color: "Yellow", timeOut: 2000});
+var lever32 = new lever({leverX: 230, leverY: 78, gateX: 360, gateY: 50, gateWidth: 10, gateHeight: 20, color: "Blue"});
+var lever33 = new lever({leverX: 230, leverY: 138, gateX: 170, gateY: 80, gateWidth: 50, gateHeight: 10, color: "Yellow", timeOut: 2000});
 
 var levers0 = [];
 var levers1 = [lever1, lever2];
@@ -389,15 +392,16 @@ var levers3 = [lever31, lever32, lever33];
 
 var box1 = new box({x: 340, y: 200, width: 40, height: 40});
 
-var box31 = new box({x: 150, y: 50, width: 20, height: 20});
-var box32 = new box({x: 370, y: 60, width: 20, height: 20});
-var box33 = new box({x: 10, y: 175, width: 20, height: 20});
+var box31 = new box({x: 130, y: 70, width: 20, height: 21});
+var box32 = new box({x: 370, y: 60, width: 20, height: 21});
+var box33 = new box({x: 10, y: 175, width: 20, height: 21});
+//var box34 = new box({x: 90, y: 380, width: 20, height: 21});
 
 var boxes0 = [];
 var boxes2 = [box1];
 var boxes3 = [box31, box32, box33];
 
-var boxChecker1 = new BoxChecker({x: 250, y: 370, width: 40, height: 10, gateX: 340, gateY: 310, gateWidth: 10, gateHeight: 70});
+var boxChecker1 = new BoxChecker({x: 300, y: 370, width: 40, height: 10, gateX: 50, gateY: 310, gateWidth: 10, gateHeight: 70});
 
 var boxCheckers = [boxChecker1];
 var boxCheckers0 = [];
@@ -405,11 +409,12 @@ var boxCheckers0 = [];
 var homeScreen = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
 var level1 = new Level({platforms: platforms1, ladders: ladders1, moneys: moneys1, boxes: boxes0, levers: levers1, boxCheckers: boxCheckers0, blueX: 370, blueY: 380, redX: 20, redY: 100, yellowX: 20, yellowY: 380, greenX: 340, greenY: 140, endX: 240, endY: 330, endWidth: 30, endHeight: 30});
 var level2 = new Level({platforms: platforms2, ladders: ladders2, moneys: moneys2, boxes: boxes2, levers: levers2, boxCheckers: boxCheckers0, blueX: 370, blueY: 380, redX: 40, redY: 300, yellowX: 185, yellowY: 50, greenX: 360, greenY: 300, endX: 20, endY: 350, endWidth: 30, endHeight: 30});
-var level3 = new Level({platforms: platforms3, ladders: ladders3, moneys: moneys3, boxes: boxes3, levers: levers3, boxCheckers: boxCheckers, blueX: 50, blueY: 380, redX: 70, redY: 380, yellowX: 90, yellowY: 380, greenX: 110, greenY: 380, endX: 360, endY: 350, endWidth: 30, endHeight: 30});
+var level3 = new Level({platforms: platforms3, ladders: ladders3, moneys: moneys3, boxes: boxes3, levers: levers3, boxCheckers: boxCheckers, blueX: 70, blueY: 380, redX: 90, redY: 380, yellowX: 110, yellowY: 380, greenX: 130, greenY: 380, endX: 10, endY: 350, endWidth: 30, endHeight: 30});
+var testLevel = new Level({platforms: platforms4, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0, blueX: 20, blueY: 20});
 var endScreen = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
 var controls = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
 var stages = new Level({platforms: platforms0, ladders: ladders0, moneys: moneys0, boxes: boxes0, levers: levers0, boxCheckers: boxCheckers0});
-var levels = [homeScreen, level1, level2, level3, endScreen, controls, stages];
+var levels = [homeScreen, level1, level2, level3, endScreen, controls, stages, testLevel];
 var currentLevel = 0;
 
 var playerAspectRatio = 170/400;
@@ -488,6 +493,11 @@ Level.applyChangeInLevels = function (players) {
 Level.drawTextAndEnd = function () {
     fill(128, 96, 74);
     rect(levels[currentLevel].endX, levels[currentLevel].endY, levels[currentLevel].endWidth, levels[currentLevel].endHeight);
+    fill(255, 255, 255)
+    rect(levels[currentLevel].endX + 5, levels[currentLevel].endY + 5, levels[currentLevel].endWidth - 10, levels[currentLevel].endHeight - 30);
+    fill(255, 0, 0)
+    textSize(8*mult)
+    text("EXIT", levels[currentLevel].endX + 10, levels[currentLevel].endY + 15, levels[currentLevel].endWidth, levels[currentLevel].endHeight)
 
     if (currentLevel === 0) {
         textSize(32 * mult);
@@ -508,11 +518,12 @@ Level.drawTextAndEnd = function () {
         fill(0, 0, 0);
         textSize(6 * mult);
         text("Boxes like these can be moved by anyone.", 300 * mult, 150 * mult, 100 * mult, 100 * mult);
+        text("These kinds of platforms are dangerous!", 20 * mult, 250 * mult, 100 * mult, 100 * mult);
     }
     if (currentLevel === 3) {
         fill(0, 0, 0);
         textSize(6 * mult);
-        text("This gate will open when three boxes are put into here.", 250 * mult, 350 * mult, 87 * mult, 100 * mult);
+        text("The black gate will open when three boxes are put into here.", 260 * mult, 350 * mult, 87 * mult, 100 * mult);
     }
     if (currentLevel === 4) {
         fill(0, 0, 0);
@@ -533,10 +544,11 @@ Level.drawTextAndEnd = function () {
         text("Player 2: Use WASD Keys to move around, and the S key to destroy breakable walls.", 400, 100, 400, 100);
         text("Player 3: Use TFGH Keys to move around, and the G key to change sizes.", 8, 400, 400, 100);
         text("Player 4: Use IJKL Keys to move around, and you can pick up other players.", 400, 400, 400, 100);
-        
-        if (currentLevel === 6) {
-            text("Levels", 100, 100, 100, 100);
-        }
+    }
+    if (currentLevel === 6) {
+        fill(0, 0, 0);
+        textSize(32*mult);
+        text("Levels", 300, 100, 400, 100);
     }
 };
 
@@ -700,10 +712,40 @@ Button.prototype.draw = function () {
         }
     }
 
-    if (this.firstLevelButton === true) {
-        if (currentLevel === 0) {
+    if (currentLevel === 6) {
+        if (this.isFirstLevelButton === true) {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
+            fill(0, 0, 0);
+            text("1", 170, 330, 800, 100);
+            if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
+                this.color1 = 37;
+                this.color2 = 130;
+            }
+            else {
+                this.color1 = 4;
+                this.color2 = 255;
+            }
+        }
+        if (this.isSecondLevelButton === true) {
+            fill(this.color1, this.color2, this.color3);
+            rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
+            fill(0, 0, 0);
+            text("2", 370, 330, 800, 100);
+            if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
+                this.color1 = 37;
+                this.color2 = 130;
+            }
+            else {
+                this.color1 = 4;
+                this.color2 = 255;
+            }
+        }
+        if (this.isThirdLevelButton === true) {
+            fill(this.color1, this.color2, this.color3);
+            rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
+            fill(0, 0, 0);
+            text("3", 570, 330, 800, 100);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -802,6 +844,60 @@ Button.prototype.applyPlayMouse = function(moneys) {
                 }
             }
         }
+        if (this.isFirstLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 1;
+                blueBall.x = levels[currentLevel].blueX;
+                blueBall.y = levels[currentLevel].blueY;
+                redBall.x = levels[currentLevel].redX;
+                redBall.y = levels[currentLevel].redY;
+                yellowBall.x = levels[currentLevel].yellowX;
+                yellowBall.y = levels[currentLevel].yellowY;
+                greenBall.x = levels[currentLevel].greenX;
+                greenBall.y = levels[currentLevel].greenY;
+
+                win = 0;
+                for (var b = 0; b < moneys.length; b++) {
+                    moneys[b].drawn = true;
+                }
+            }
+        }
+        if (this.isSecondLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 2;
+                blueBall.x = levels[currentLevel].blueX;
+                blueBall.y = levels[currentLevel].blueY;
+                redBall.x = levels[currentLevel].redX;
+                redBall.y = levels[currentLevel].redY;
+                yellowBall.x = levels[currentLevel].yellowX*mult;
+                yellowBall.y = levels[currentLevel].yellowY*mult;
+                greenBall.x = levels[currentLevel].greenX;
+                greenBall.y = levels[currentLevel].greenY;
+
+                win = 0;
+                for (var b = 0; b < moneys.length; b++) {
+                    moneys[b].drawn = true;
+                }
+            }
+        }
+        if (this.isThirdLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 3;
+                blueBall.x = levels[currentLevel].blueX;
+                blueBall.y = levels[currentLevel].blueY;
+                redBall.x = levels[currentLevel].redX;
+                redBall.y = levels[currentLevel].redY;
+                yellowBall.x = levels[currentLevel].yellowX;
+                yellowBall.y = levels[currentLevel].yellowY;
+                greenBall.x = levels[currentLevel].greenX;
+                greenBall.y = levels[currentLevel].greenY;
+
+                win = 0;
+                for (var b = 0; b < moneys.length; b++) {
+                    moneys[b].drawn = true;
+                }
+            }
+        }
     }
 };
 Level.prototype.applyPause = function() {
@@ -835,151 +931,119 @@ Platform.prototype.applyMovement = function () {
 
 };
 
+var createAABB = function(x, y, width, height) {
+    var centerX = x + width/2;
+    var centerY = y + height/2;
+    return new AABB(new Point(centerX, centerY), new Point(width/2, height/2));
+}
+
+var intersectPlayerWithPlatform = function(player, platform) {
+    var playerAABB = createAABB(player.x, player.y, player.width, player.height);
+    var platformAABB = createAABB(platform.x, platform.y, platform.width, platform.height);
+    var delta = new Point(player.vx, player.vy);
+
+    var sweep = platformAABB.sweepAABB(playerAABB, delta);
+
+    if (sweep.hit === null)
+        return ""
+
+    if (sweep.hit.normal.x > 0) 
+        return "Right"
+
+    if (sweep.hit.normal.x < 0) 
+        return "Left"
+
+    if (sweep.hit.normal.y > 0) 
+        return "Bottom"
+    
+    if (sweep.hit.normal.y < 0) 
+        return "Top"
+}
+
+var intersectTop = function(player, platform) {
+    if (player.y + player.height > platform.y && player.y < platform.y + 1 && player.x + player.width/2 > platform.x && player.x + player.width/2 < platform.x + platform.width) {
+        return true
+    } else {
+        return false
+    }
+
+};
+var intersectRight = function(player, platform) {
+    if (player.y + player.height*3/4 > platform.y && player.y + player.height/4 < platform.y + platform.height && player.x + player.width > platform.x && player.x < platform.x + 1) {
+        return true
+    } else {
+        return false
+    }
+};
+var intersectLeft = function(player, platform) {
+    if (player.y + player.height*3/4 > platform.y && player.y + player.height/4 < platform.y + platform.height && player.x < platform.x + platform.width && player.x > platform.x - 1) {
+        return true
+    } else {
+        return false
+    }
+}
+var intersectBottom = function(player, platform) {
+    if (player.x + player.width/2 > platform.x && player.x + player.width/2 < platform.x + platform.width && player.y < platform.y + platform.height && player.y > platform.y) {
+        return true
+    } else {
+        return false
+    }
+}
 thingsWithPhysics.prototype.applyIntersect = function (platform) {
-    if (platform.isBroken === false) {
-        if (platform.canKill === false && this.y + this.height > platform.y && this.y < platform.y + 1 && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width) {  
+    if (platform.isBroken) 
+        return
+    if (platform.canKill === false) {
+        var hitSide = intersectPlayerWithPlatform(this, platform);
+        if (intersectTop(this, platform)) {  
             this.y = platform.y - this.height;
             this.vy = 0;
             this.onPlatform = true;
         }
-
-        if (platform.canKill === true && this.y > platform.y - this.height && this.y < platform.y + 1 && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width) {
-            if (this.name === "Blue") {
-                this.x = levels[currentLevel].blueX;
-                this.y = levels[currentLevel].blueY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Red") {
-                this.x = levels[currentLevel].redX;
-                this.y = levels[currentLevel].redY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Yellow") {
-                this.x = levels[currentLevel].yellowX;
-                this.y = levels[currentLevel].yellowY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Green") {
-                this.isHolding = false;
-                blueBall.isHeld = false;
-                redBall.isHeld = false;
-                yellowBall.isHeld = false;
-                this.x = levels[currentLevel].greenX;
-                this.y = levels[currentLevel].greenY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-        }
-        if (platform.canKill === false && this.y + this.height*3/4 > platform.y && this.y + this.height/4 < platform.y + platform.height && this.x + this.width > platform.x && this.x < platform.x + 1) {
+        
+        if (intersectRight(this, platform)) {
             this.x = platform.x - this.width;
             this.vx = 0;
         }
         
-        if (platform.canKill === true && this.y + this.height/2 > platform.y && this.y + this.height/2 < platform.y + platform.height && this.x + this.width > platform.x && this.x < platform.x + 1) {
-            if (this.name === "Blue") {
-                this.x = levels[currentLevel].blueX;
-                this.y = levels[currentLevel].blueY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Red") {
-                this.x = levels[currentLevel].redX;
-                this.y = levels[currentLevel].redY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Yellow") {
-                this.x = levels[currentLevel].yellowX;
-                this.y = levels[currentLevel].yellowY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Green") {
-                this.isHolding = false;
-                blueBall.isHeld = false;
-                redBall.isHeld = false;
-                yellowBall.isHeld = false;
-                this.x = levels[currentLevel].greenX;
-                this.y = levels[currentLevel].greenY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-
-        }
-        
-        if (platform.canKill === false && this.y + this.height*3/4 > platform.y && this.y + this.height/4 < platform.y + platform.height && this.x < platform.x + platform.width && this.x > platform.x - 1) {
+        if (intersectLeft(this, platform)) {
             this.x = platform.x + platform.width;
             this.vx = 0;
         }
         
-        if (platform.canKill === true && this.y + this.height/2 > platform.y && this.y + this.height/2 < platform.y + platform.height && this.x < platform.x + platform.width && this.x > platform.x - 1) {
-            if (this.name === "Blue") {
-                this.x = levels[currentLevel].blueX;
-                this.y = levels[currentLevel].blueY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Red") {
-                this.x = levels[currentLevel].redX;
-                this.y = levels[currentLevel].redY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Yellow") {
-                this.x = levels[currentLevel].yellowX;
-                this.y = levels[currentLevel].yellowY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Green") {
-                this.isHolding = false;
-                blueBall.isHeld = false;
-                redBall.isHeld = false;
-                yellowBall.isHeld = false;
-                this.x = levels[currentLevel].greenX;
-                this.y = levels[currentLevel].greenY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-        }
-        
-        if (platform.canKill === false && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width && this.y < platform.y + platform.height && this.y > platform.y) {
+        if (intersectBottom(this, platform)) {
             this.y = platform.y + platform.height;
             this.vy = 0;
         }
-        
-        if (platform.canKill === true && this.x + this.width/2 > platform.x && this.x + this.width/2 < platform.x + platform.width && this.y < platform.y + platform.height && this.y > platform.y) {
-            if (this.name === "Blue") {
-                this.x = levels[currentLevel].blueX;
-                this.y = levels[currentLevel].blueY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Red") {
-                this.x = levels[currentLevel].redX;
-                this.y = levels[currentLevel].redY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Yellow") {
-                this.x = levels[currentLevel].yellowX;
-                this.y = levels[currentLevel].yellowY;
-                this.vx = 0;
-                this.vy = 0;
-            }
-            else if (this.name === "Green") {
-                this.isHolding = false;
-                blueBall.isHeld = false;
-                redBall.isHeld = false;
-                yellowBall.isHeld = false;
-                this.x = levels[currentLevel].greenX;
-                this.y = levels[currentLevel].greenY;
-                this.vx = 0;
-                this.vy = 0;
-            }
+        return
+    } 
+    if (this.x + this.width > platform.x && this.x < platform.x + platform.width && this.y + this.height > platform.y && this.y < platform.y + platform.height) {
+        if (this.name === "Blue") {
+            this.x = levels[currentLevel].blueX;
+            this.y = levels[currentLevel].blueY;
+            this.vx = 0;
+            this.vy = 0;
+        }
+        else if (this.name === "Red") {
+            this.x = levels[currentLevel].redX;
+            this.y = levels[currentLevel].redY;
+            this.vx = 0;
+            this.vy = 0;
+        }
+        else if (this.name === "Yellow") {
+            this.x = levels[currentLevel].yellowX;
+            this.y = levels[currentLevel].yellowY;
+            this.vx = 0;
+            this.vy = 0;
+        }
+        else if (this.name === "Green") {
+            this.isHolding = false;
+            blueBall.isHeld = false;
+            redBall.isHeld = false;
+            yellowBall.isHeld = false;
+            this.x = levels[currentLevel].greenX;
+            this.y = levels[currentLevel].greenY;
+            this.vx = 0;
+            this.vy = 0;
         }
     }
 };
@@ -1031,10 +1095,10 @@ Ball.prototype.applyIntersect4 = function(box) {
     }
 };
 Ball.prototype.applyHold = function(otherBall) {
-        if (keys.includes(DOWN) && this.isHolding === false && this.y + this.height > otherBall.y && this.y + this.height < otherBall.y + otherBall.height && this.x + this.width > otherBall.x && this.x < otherBall.x + otherBall.width) {
-            otherBall.isHeld = true;
-            this.isHolding = true;
-        } 
+    if (keys.includes(DOWN) && this.isHolding === false && this.y + this.height > otherBall.y && this.y + this.height < otherBall.y + otherBall.height && this.x + this.width > otherBall.x && this.x < otherBall.x + otherBall.width) {
+        otherBall.isHeld = true;
+        this.isHolding = true;
+    } 
         
     if (otherBall.isHeld === true) {
         otherBall.x = this.x;
@@ -1042,7 +1106,7 @@ Ball.prototype.applyHold = function(otherBall) {
         if (keys.includes(UP)) {
             otherBall.isHeld = false;
             otherBall.vx += this.vx * 2;
-            otherBall.vy -= 8 * mult;
+            otherBall.vy -= 7.5 * mult;
             this.isHolding = false;
             this.holdingCountdown = 50;
         }
@@ -1414,7 +1478,7 @@ draw = function () {
                 levers[i].expirationTime = 0;
             }
         }
-        
+
         for (var b = 0; b < players.length; b++) {
             players[b].onPlatform = false;
             for (var i = 0; i < platforms.length; i++) {
