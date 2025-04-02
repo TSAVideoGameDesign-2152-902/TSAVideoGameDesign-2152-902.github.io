@@ -65,6 +65,7 @@ setup = function() {
 var mult = 2;
 var win = 0;
 var gameIsPaused = false;
+var amountOfPlayers = 0;
 var thingsWithPhysics = function(config) {
     this.x = config.x * mult;
     this.y = config.y * mult;
@@ -98,6 +99,8 @@ Ball.prototype = Object.create(thingsWithPhysics.prototype);
 var box = function(config) {
     thingsWithPhysics.call(this, config);
     this.acceleration = 0.15 * mult;
+    this.startX = this.x;
+    this.startY = this.y;
 };
 box.prototype = Object.create(thingsWithPhysics.prototype);
 
@@ -462,34 +465,41 @@ BoxChecker.prototype.checkBox = function(boxes) {
     }
 };
 
-Level.applyChangeInLevels = function (players) {
-    var amountOfPlayers = 0;
-    for (i = 0; i < players.length; i++) {
-        if (win === 3 && players[i].x + players[i].width/2 > levels[currentLevel].endX && players[i].x + players[i].width/2 < levels[currentLevel].endX + levels[currentLevel].endWidth && players[i].y + players[i].width/2 > levels[currentLevel].endY && players[i].y + players[i].width/2 < levels[currentLevel].endY + levels[currentLevel].endHeight) {
-            amountOfPlayers += 1;
-            if (amountOfPlayers === 4) {
-                greenBall.isHolding = false;
-                blueBall.isHeld = false;
-                redBall.isHeld = false;
-                yellowBall.isHeld = false;
-                currentLevel++;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX * mult;
-                yellowBall.y = levels[currentLevel].yellowY * mult;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
-                
-                players[i].vx = 0;
-                players[i].vy = 0;
+Level.applyChangeInLevels = function () {
+    greenBall.isHolding = false;
+    blueBall.isHeld = false;
+    redBall.isHeld = false;
+    yellowBall.isHeld = false;
+    blueBall.x = levels[currentLevel].blueX;
+    blueBall.y = levels[currentLevel].blueY;
+    redBall.x = levels[currentLevel].redX;
+    redBall.y = levels[currentLevel].redY;
+    yellowBall.x = levels[currentLevel].yellowX * mult;
+    yellowBall.y = levels[currentLevel].yellowY * mult;
+    greenBall.x = levels[currentLevel].greenX;
+    greenBall.y = levels[currentLevel].greenY;
 
-                amountOfPlayers = 0;
-                win = 0;
-            }
-        }
+    for (i = 0; i < levels[currentLevel].boxes.length; i++) {
+        levels[currentLevel].boxes[i].x = levels[currentLevel].boxes[i].startX
+        levels[currentLevel].boxes[i].y = levels[currentLevel].boxes[i].startY
     }
+
+    for (i = 0; i < players.length; i++) {        
+        players[i].vx = 0;
+        players[i].vy = 0;
+    }
+
+    for (i = 0; i < levels[currentLevel].moneys.length; i++) {
+        levels[currentLevel].moneys[i].drawn = true;
+    }
+    
+    for (i = 0; i < levels[currentLevel].platforms.length; i++) {
+        levels[currentLevel].platforms[i].isBroken = false;
+    }
+
+    amountOfPlayers = 0;
+    win = 0;
+            
 };
 
 Level.drawTextAndEnd = function () {
@@ -799,19 +809,26 @@ Button.prototype.applyMouse = function (moneys) {
         if (this.isRestartButton === true) {
             if (gameIsPaused === true && currentLevel > 0 && currentLevel < 4) {
                 gameIsPaused = false;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX;
-                yellowBall.y = levels[currentLevel].yellowY;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
+                Level.applyChangeInLevels(moneys);
+            }
+        }
 
-                win = 0;
-                for (var b = 0; b < moneys.length; b++) {
-                    moneys[b].drawn = true;
-                }
+        if (this.isFirstLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 1;
+                Level.applyChangeInLevels(moneys);
+            }
+        }
+        if (this.isSecondLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 2;
+                Level.applyChangeInLevels(moneys);
+            }
+        }
+        if (this.isThirdLevelButton === true) {
+            if (currentLevel === 6) {
+                currentLevel = 3;
+                Level.applyChangeInLevels(moneys);
             }
         }
     }
@@ -822,75 +839,10 @@ Button.prototype.applyPlayMouse = function(moneys) {
         if (this.isPlayButton === true) {
             if (currentLevel === 0) {
                 currentLevel = 1;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX;
-                yellowBall.y = levels[currentLevel].yellowY;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
-
-                win = 0;
-                for (var b = 0; b < moneys.length; b++) {
-                    moneys[b].drawn = true;
-                }
+                Level.applyChangeInLevels(moneys);
             }
         }
-        if (this.isFirstLevelButton === true) {
-            if (currentLevel === 6) {
-                currentLevel = 1;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX;
-                yellowBall.y = levels[currentLevel].yellowY;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
-
-                win = 0;
-                for (var b = 0; b < moneys.length; b++) {
-                    moneys[b].drawn = true;
-                }
-            }
-        }
-        if (this.isSecondLevelButton === true) {
-            if (currentLevel === 6) {
-                currentLevel = 2;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX*mult;
-                yellowBall.y = levels[currentLevel].yellowY*mult;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
-
-                win = 0;
-                for (var b = 0; b < moneys.length; b++) {
-                    moneys[b].drawn = true;
-                }
-            }
-        }
-        if (this.isThirdLevelButton === true) {
-            if (currentLevel === 6) {
-                currentLevel = 3;
-                blueBall.x = levels[currentLevel].blueX;
-                blueBall.y = levels[currentLevel].blueY;
-                redBall.x = levels[currentLevel].redX;
-                redBall.y = levels[currentLevel].redY;
-                yellowBall.x = levels[currentLevel].yellowX;
-                yellowBall.y = levels[currentLevel].yellowY;
-                greenBall.x = levels[currentLevel].greenX;
-                greenBall.y = levels[currentLevel].greenY;
-
-                win = 0;
-                for (var b = 0; b < moneys.length; b++) {
-                    moneys[b].drawn = true;
-                }
-            }
-        }
+        
     }
 };
 Level.prototype.applyPause = function() {
@@ -1536,7 +1488,15 @@ draw = function () {
             players[b].applyVelocity();
         }
 
-        Level.applyChangeInLevels(players);
+        for (i = 0; i < players.length; i++) {
+                if (win === 3 && players[i].x + players[i].width/2 > levels[currentLevel].endX && players[i].x + players[i].width/2 < levels[currentLevel].endX + levels[currentLevel].endWidth && players[i].y + players[i].width/2 > levels[currentLevel].endY && players[i].y + players[i].width/2 < levels[currentLevel].endY + levels[currentLevel].endHeight) {
+                    amountOfPlayers += 1;
+                    if (amountOfPlayers === 4) {
+                        currentLevel++;
+                        Level.applyChangeInLevels();
+                    }
+                }
+        }
 
         for (var b = 0; b < boxes.length; b++) {
             boxes[b].applyGravity();
