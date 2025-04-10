@@ -11,8 +11,16 @@ var sketchProc = function (processingInstance) {
         // END BOILER PLATE
 
 var controlScreen
+var fourBackgroundScreen
+var backgroundScreen
+var boxImage
+var breakableBoxImage
 setup = function() {
     controlScreen = loadImage('control screen.png');
+    fourBackgroundScreen = loadImage('fourBackground.png');
+    backgroundScreen = loadImage('Background.png')
+    boxImage = loadImage('MoveableCrate.png')
+    breakableBoxImage = loadImage('Breakable Block.png')
     blueBall.rightImages = [];
     blueBall.rightImages.push(loadImage('Player 1-1R.png'));
     blueBall.rightImages.push(loadImage('Player 1-2R.png'));
@@ -222,7 +230,8 @@ Platform.prototype.draw = function () {
     } else if (this.canBreak === true) {
         if (this.isBroken === false) {
             fill(100, 100, 100);
-            rect(this.x, this.y, this.width, this.height);
+            image(breakableBoxImage, this.x, this.y, this.width, this.height)
+            //rect(this.x, this.y, this.width, this.height);
         }
     }
 };
@@ -514,7 +523,7 @@ Level.drawTextAndEnd = function () {
     if (currentLevel === 0) {
         textSize(32 * mult);
         fill(0, 0, 0);
-        text("The Heist", 122 * mult, 34 * mult, 400 * mult, 100 * mult);
+        text("The Heist", 122 * mult, 60 * mult, 400 * mult, 100 * mult);
         textSize(12 * mult);
         text("Made by 2152-902", 131 * mult, 345 * mult, 339 * mult, 100 * mult);
     }
@@ -1368,7 +1377,8 @@ lever.prototype.draw = function() {
 box.prototype.draw = function() {
     if (currentLevel > 0) {
         fill(133, 67, 0)
-        rect(this.x, this.y, this.width, this.height);
+        image(boxImage, this.x, this.y, this.width, this.height)
+        //rect(this.x, this.y, this.width, this.height);
     }
 };
 BoxChecker.prototype.draw = function() {
@@ -1513,7 +1523,11 @@ draw = function () {
             boxCheckers[i].checkBox(boxes);
         }
     }
-    background(199, 199, 199);
+    if (currentLevel === 0) {
+        image(fourBackgroundScreen, 0, 0, 800, 800);
+    } else {
+        image(backgroundScreen, 0, 0, 800, 800)
+    }
     Level.drawTextAndEnd();
 
     for (var i = 0; i < levers.length; i++) {
