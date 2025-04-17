@@ -11,16 +11,24 @@ var sketchProc = function (processingInstance) {
         // END BOILER PLATE
 
 var controlScreen
-var fourBackgroundScreen
 var backgroundScreen
+var backgroundScreen2
+var backgroundScreen3
 var boxImage
 var breakableBoxImage
+var safeImage
+var moneyImage
+var f = createFont("monospace");
+textFont(f);
 setup = function() {
     controlScreen = loadImage('control screen.png');
-    fourBackgroundScreen = loadImage('fourBackground.png');
-    backgroundScreen = loadImage('Background.png')
+    backgroundScreen = loadImage('NewBackground.png')
+    backgroundScreen2 = loadImage('BlueBackground2.png');
+    backgroundScreen3 = loadImage('fourBackground.png')
     boxImage = loadImage('MoveableCrate.png')
     breakableBoxImage = loadImage('Breakable Block.png')
+    safeImage = loadImage('safeImage.png')
+    moneyImage = loadImage('moneyBag.png')
     blueBall.rightImages = [];
     blueBall.rightImages.push(loadImage('Player 1-1R.png'));
     blueBall.rightImages.push(loadImage('Player 1-2R.png'));
@@ -177,13 +185,13 @@ var Button = function (config) {
     this.isSecondLevelButton = config.isSecondLevelButton || false;
     this.isThirdLevelButton = config.isThirdLevelButton || false;
 };
-var playButton = new Button({ buttonX: 127, buttonY: 93, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isPlayButton: true });
+var playButton = new Button({ buttonX: 135, buttonY: 310, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isPlayButton: true });
 
 var mainMenuButton = new Button({ buttonX: 142, buttonY: 335, buttonWidth: 120, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isMainMenuButton: true});
 
-var controlButton = new Button({ buttonX: 127, buttonY: 147, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isControlButton: true });
+var controlButton = new Button({ buttonX: 1, buttonY: 310, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isControlButton: true });
 
-var levelButton = new Button({ buttonX: 127, buttonY: 199, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isLevelButton: true });
+var levelButton = new Button({ buttonX: 269, buttonY: 310, buttonWidth: 130, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isLevelButton: true });
 
 var backButton = new Button({ buttonX: 16, buttonY: 20, buttonWidth: 80, buttonHeight: 40, color1: 4, color2: 255, color3: 0, isBackButton: true });
 
@@ -215,15 +223,19 @@ var Platform = function (config) {
     this.canMove = config.canMove || false;
     this.canBreak = config.canBreak || false;
     this.isBroken = false;
+    this.topPlat = config.topPlat || false;
     };
     
 Platform.prototype.draw = function () {
     if (this.canBreak === false) {
         if (this.canKill === false) {
             fill(255, 255, 255);
+            //fill(95, 168, 179);
+            //fill(80, 81, 89);
+            //fill(139, 141, 153);
+            //noStroke();
             rect(this.x, this.y, this.width, this.height);
-        }
-        else {
+        } else {
             fill(171, 0, 0);
             rect(this.x, this.y, this.width, this.height);
         }
@@ -233,6 +245,11 @@ Platform.prototype.draw = function () {
             image(breakableBoxImage, this.x, this.y, this.width, this.height)
             //rect(this.x, this.y, this.width, this.height);
         }
+    } 
+    
+    if (this.topPlat === true) {
+        fill(204, 204, 255);
+        rect(this.x, this.y, this.width, this.height);
     }
 };
 
@@ -263,7 +280,7 @@ var Platform12 = new Platform({x: 280, y: 150, width: 120, height: 10});
 var Platform13 = new Platform({x: 300, y: 50, width: 10, height: 80});
 var Platform14 = new Platform({x: 200, y: 240, width: 20, height: 10});
 var Platform15 = new Platform({x: 170, y: 240, width: 20, height: 10});
-var Platform16 = new Platform({x: -1, y: 0, width: 402, height: 50});
+var Platform16 = new Platform({x: -1, y: 0, width: 402, height: 50, topPlat: true});
 var breakPlatform1 = new Platform({x: 340, y: 369, width: 10, height: 11, canBreak: true});
 var breakPlatform2 = new Platform({x: 300, y: 140, width: 10, height: 10, canBreak: true});
 var breakPlatform3 = new Platform({x: 300, y: 130, width: 10, height: 10, canBreak: true});
@@ -525,26 +542,26 @@ Level.drawTextAndEnd = function () {
         fill(0, 0, 0);
         text("The Heist", 122 * mult, 60 * mult, 400 * mult, 100 * mult);
         textSize(12 * mult);
-        text("Made by 2152-902", 131 * mult, 345 * mult, 339 * mult, 100 * mult);
+        text("Made by 2152-902", 140 * mult, 90 * mult, 339 * mult, 100 * mult);
     }
     if (currentLevel === 1) {
         fill(0, 0, 0);
         textSize(6 * mult)
-        text("Hmmm...Looks like only one of the players can press these buttons.", 8 * mult, 250 * mult, 114 * mult, 100 * mult);
-        text("Breakable blocks such as these can be broken by only one of the players.", 200 * mult, 110 * mult, 100 * mult, 100 * mult);
+        text("Hmmm...Looks like only one of the players can press these buttons.", 8 * mult, 254 * mult, 114 * mult, 100 * mult);
+        text("Breakable blocks such as these can only be broken by one of the players.", 312 * mult, 102 * mult, 90 * mult, 100 * mult);
         text("Make sure to collect these coins. You can't finish the level without them!", 160 * mult, 210 * mult, 100 * mult, 100 * mult);
         text("Looks like you can't jump. If only there was someone who could pick you up...", 62 * mult, 60 * mult, 100 * mult, 100 * mult);
     }
     if (currentLevel === 2) {
         fill(0, 0, 0);
         textSize(6 * mult);
-        text("Boxes like these can be moved by anyone.", 300 * mult, 150 * mult, 100 * mult, 100 * mult);
-        text("These kinds of platforms are dangerous!", 20 * mult, 250 * mult, 100 * mult, 100 * mult);
+        text("Boxes like these can be moved by anyone.", 300 * mult, 155 * mult, 100 * mult, 100 * mult);
+        text("These kinds of platforms are dangerous!", 20 * mult, 252 * mult, 100 * mult, 100 * mult);
     }
     if (currentLevel === 3) {
         fill(0, 0, 0);
         textSize(6 * mult);
-        text("The black gate will open when three boxes are put into here.", 260 * mult, 350 * mult, 87 * mult, 100 * mult);
+        text("The black gate will open when three boxes are put into here.", 260 * mult, 355 * mult, 87 * mult, 100 * mult);
     }
     if (currentLevel === 4) {
         fill(0, 0, 0);
@@ -571,7 +588,7 @@ Button.prototype.draw = function () {
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
             textSize(32 * mult);
-            text("Play", 162 * mult, 101 * mult, 100 * mult, 100 * mult);
+            text("Play", 164 * mult, 317 * mult, 100 * mult, 100 * mult);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -651,7 +668,8 @@ Button.prototype.draw = function () {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
-            text("Controls", 133 * mult, 156 * mult, 111 * mult, 100 * mult);
+            textSize(30 * mult)
+            text("Controls", 0 * mult, 320 * mult, 171 * mult, 100 * mult);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -668,7 +686,7 @@ Button.prototype.draw = function () {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
-            text("Levels", 149 * mult, 207 * mult, 111 * mult, 100 * mult);
+            text("Levels", 285 * mult, 320 * mult, 111 * mult, 100 * mult);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -1504,6 +1522,7 @@ draw = function () {
                     if (amountOfPlayers === 4) {
                         currentLevel++;
                         Level.applyChangeInLevels();
+
                     }
                 }
         }
@@ -1524,10 +1543,18 @@ draw = function () {
         }
     }
     if (currentLevel === 0) {
-        image(fourBackgroundScreen, 0, 0, 800, 800);
+        image(backgroundScreen, 0, 0, 800, 800);
+        image(safeImage, 200, 230, 252 * 1.6, 205 * 1.6);
+        image(moneyImage, 140, 460, 140, 140);
+        image(moneyImage, 530, 460, 140, 140);
+    } else if (currentLevel > 4) {
+        image(backgroundScreen3, 0, 0, 800, 800);
     } else {
-        image(backgroundScreen, 0, 0, 800, 800)
-    }
+        image(backgroundScreen2, 0, 0, 400, 400)
+        image(backgroundScreen2, 400, 0, 400, 400)
+        image(backgroundScreen2, 0, 400, 400, 400)
+        image(backgroundScreen2, 400, 400, 400, 400)
+    } 
     Level.drawTextAndEnd();
 
     for (var i = 0; i < levers.length; i++) {
