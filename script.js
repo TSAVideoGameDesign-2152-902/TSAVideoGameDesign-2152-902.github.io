@@ -81,7 +81,6 @@ setup = function() {
 var mult = 2;
 var win = 0;
 var gameIsPaused = false;
-var amountOfPlayers = 0;
 var thingsWithPhysics = function(config) {
     this.x = config.x * mult;
     this.y = config.y * mult;
@@ -524,9 +523,22 @@ Level.applyChangeInLevels = function () {
     }
 
     amountOfPlayers = 0;
-    win = 0;
-            
+    win = 0;   
 };
+
+Level.endLevel = function() {
+    var amountOfPlayers = 0;
+    for (i = 0; i < players.length; i++) {
+        if (win === 3 && players[i].x + players[i].width/2 > levels[currentLevel].endX && players[i].x + players[i].width/2 < levels[currentLevel].endX + levels[currentLevel].endWidth && players[i].y + players[i].width/2 > levels[currentLevel].endY && players[i].y + players[i].width/2 < levels[currentLevel].endY + levels[currentLevel].endHeight) {
+            amountOfPlayers += 1;
+            if (amountOfPlayers === 4) {
+                currentLevel++;
+                Level.applyChangeInLevels();
+            }
+        }
+    }
+
+}
 
 Level.drawTextAndEnd = function () {
     fill(128, 96, 74);
@@ -566,9 +578,9 @@ Level.drawTextAndEnd = function () {
     if (currentLevel === 4) {
         fill(0, 0, 0);
         textSize(40*mult);
-        text("The End...For Now", 29 * mult, 125 * mult, 438 * mult, 100 * mult);
+        text("The End...For Now", 15 * mult, 125 * mult, 438 * mult, 100 * mult);
         textSize(20*mult);
-        text("More Levels Coming Soon!",76*mult,293*mult,271*mult,100*mult);
+        text("More Levels Coming Soon!",76*mult,203*mult,271*mult,100*mult);
         textSize(12*mult);
     }
     if (currentLevel === 5) {
@@ -651,7 +663,7 @@ Button.prototype.draw = function () {
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             textSize(32*mult);
             fill(0, 0, 0);
-            text("Restart",149*mult,344*mult,271*mult,100*mult);
+            text("Restart",141*mult,344*mult,271*mult,100*mult);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -702,7 +714,7 @@ Button.prototype.draw = function () {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
-            text("Resume", 140, 450, 800, 100);
+            text("Resume", 150, 450, 800, 100);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -716,7 +728,7 @@ Button.prototype.draw = function () {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
-            text("Main Menu", 520, 450, 800, 100);
+            text("Main Menu", 522, 450, 800, 100);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -730,7 +742,7 @@ Button.prototype.draw = function () {
             fill(this.color1, this.color2, this.color3);
             rect(this.buttonX, this.buttonY, this.buttonWidth, this.buttonHeight);
             fill(0, 0, 0);
-            text("Restart", 350, 450, 800, 100);
+            text("Restart", 340, 450, 800, 100);
             if (mouseX > this.buttonX && mouseX < this.buttonX + this.buttonWidth && mouseY > this.buttonY && mouseY < this.buttonY + this.buttonHeight) {
                 this.color1 = 37;
                 this.color2 = 130;
@@ -1516,17 +1528,8 @@ draw = function () {
             players[b].applyVelocity();
         }
 
-        for (i = 0; i < players.length; i++) {
-                if (win === 3 && players[i].x + players[i].width/2 > levels[currentLevel].endX && players[i].x + players[i].width/2 < levels[currentLevel].endX + levels[currentLevel].endWidth && players[i].y + players[i].width/2 > levels[currentLevel].endY && players[i].y + players[i].width/2 < levels[currentLevel].endY + levels[currentLevel].endHeight) {
-                    amountOfPlayers += 1;
-                    if (amountOfPlayers === 4) {
-                        currentLevel++;
-                        Level.applyChangeInLevels();
-
-                    }
-                }
-        }
-
+        Level.endLevel();
+        
         for (var b = 0; b < boxes.length; b++) {
             boxes[b].applyGravity();
             boxes[b].applyAcceleration();
