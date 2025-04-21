@@ -222,17 +222,12 @@ var Platform = function (config) {
     this.canMove = config.canMove || false;
     this.canBreak = config.canBreak || false;
     this.isBroken = false;
-    this.topPlat = config.topPlat || false;
     };
     
 Platform.prototype.draw = function () {
     if (this.canBreak === false) {
         if (this.canKill === false) {
             fill(255, 255, 255);
-            //fill(95, 168, 179);
-            //fill(80, 81, 89);
-            //fill(139, 141, 153);
-            //noStroke();
             rect(this.x, this.y, this.width, this.height);
         } else {
             fill(171, 0, 0);
@@ -245,11 +240,6 @@ Platform.prototype.draw = function () {
             //rect(this.x, this.y, this.width, this.height);
         }
     } 
-    
-    if (this.topPlat === true) {
-        fill(204, 204, 255);
-        rect(this.x, this.y, this.width, this.height);
-    }
 };
 
 var Ladder = function(config) {
@@ -279,7 +269,7 @@ var Platform12 = new Platform({x: 280, y: 150, width: 120, height: 10});
 var Platform13 = new Platform({x: 300, y: 50, width: 10, height: 80});
 var Platform14 = new Platform({x: 200, y: 240, width: 20, height: 10});
 var Platform15 = new Platform({x: 170, y: 240, width: 20, height: 10});
-var Platform16 = new Platform({x: -1, y: 0, width: 402, height: 50, topPlat: true});
+var Platform16 = new Platform({x: -1, y: 0, width: 402, height: 50});
 var breakPlatform1 = new Platform({x: 340, y: 369, width: 10, height: 11, canBreak: true});
 var breakPlatform2 = new Platform({x: 300, y: 140, width: 10, height: 10, canBreak: true});
 var breakPlatform3 = new Platform({x: 300, y: 130, width: 10, height: 10, canBreak: true});
